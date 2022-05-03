@@ -1,13 +1,13 @@
-package com.generation.projetointegrador;
+package com.generation.Enlace;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ProjetointegradorApplication {
+public class EnlaceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ProjetointegradorApplication.class, args);
+		SpringApplication.run(EnlaceApplication.class, args);
 	}
 
 }

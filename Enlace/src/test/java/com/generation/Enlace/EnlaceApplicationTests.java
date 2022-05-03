@@ -1,4 +1,4 @@
-package com.generation.Enlace;
+package com.generation.enlace;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,4 +1,4 @@
-package com.generation.Enlace;
+package com.generation.enlace;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

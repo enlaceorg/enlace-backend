@@ -6,29 +6,32 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
-@Table(name="tema")
+@Table(name="temas")
 public class TemaModel {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Long tema_id;
 	
 	@NotNull
 	private String descricao;
 	
 	@NotNull
+	@Size(min=3,max=20)
 	private String tag;
+	
 	
 	//Get Set
 
 	public Long getId() {
-		return id;
+		return tema_id;
 	}
 
 	public void setId(Long id) {
-		this.id = id;
+		this.tema_id = id;
 	}
 
 	public String getDescricao() {

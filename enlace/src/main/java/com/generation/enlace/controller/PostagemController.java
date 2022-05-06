@@ -21,7 +21,7 @@ import com.generation.enlace.model.PostagemModel;
 import com.generation.enlace.repository.PostagemRepository;
 
 @RestController
-@RequestMapping("/postagem")
+@RequestMapping("/postagens")
 @CrossOrigin(origins = "*")
 public class PostagemController {
 	
@@ -49,22 +49,16 @@ public class PostagemController {
 	public ResponseEntity<PostagemModel> post(@Valid @RequestBody PostagemModel conteudo){
 		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(conteudo));		
 	}
-	
-<<<<<<< HEAD
-	@DeleteMapping("/{postagemId}")
-	public void delete(@PathVariable long postagemId) {
-		repository.deleteById(postagemId);
-=======
+
 	@PutMapping
 	public ResponseEntity<PostagemModel> put(@Valid @RequestBody PostagemModel conteudo){
 		return ResponseEntity.status(HttpStatus.OK).body(repository.save(conteudo));
 				
 	}
 	
-	@DeleteMapping("/{postagem_id}")
-	public void delete(@PathVariable long postagem_id) {
-		repository.deleteById(postagem_id);
->>>>>>> 21f42db6c89ff36c73d9b4c5527c96cdb9aca085
+	@DeleteMapping("/{postagemId}")
+	public void delete(@PathVariable long postagemId) {
+		repository.deleteById(postagemId);
 	}
 	
 }

@@ -32,8 +32,8 @@ public class TemaModel {
 		return temaId;
 	}
 
-	public void setId(Long id) {
-		this.temaId = id;
+	public void setId(Long temaId) {
+		this.temaId = temaId;
 	}
 
 	public String getDescricao() {

@@ -34,11 +34,14 @@ public class UsuarioController {
 		return repository.findById(usuarioId).map(resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());
 	}
 
+<<<<<<< HEAD
 	@GetMapping("/nome/{nome}")
 	public ResponseEntity<List<UsuarioModel>>getByNome(@PathVariable String nome){
 		return ResponseEntity.ok(repository.findAllByNomeContainingIgnoreCase(nome));
 	}
 
+=======
+>>>>>>> af153e7ff4837404fead05bce4a309fec682d8ff
 	@PostMapping
 	public ResponseEntity<UsuarioModel> post (@RequestBody UsuarioModel usuario){
 		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(usuario));

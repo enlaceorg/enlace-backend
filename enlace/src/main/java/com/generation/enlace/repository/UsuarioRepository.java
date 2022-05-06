@@ -1,4 +1,13 @@
 package com.generation.enlace.repository;
 
-public class UsuarioRepository {
+import com.generation.enlace.model.UsuarioModel;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+@Repository
+public class UsuarioRepository extends JpaRepository<UsuarioModel, Long> {
+        public List<UsuarioModel> findAllByNomeContainingIgnoreCase(String nome);
 }
+

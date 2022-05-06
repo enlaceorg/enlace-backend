@@ -1,5 +1,6 @@
 package com.generation.enlace.model;
 
+<<<<<<< HEAD
 import java.time.Instant;
 
 import javax.persistence.Column;
@@ -78,5 +79,8 @@ public class PostagemModel {
 		this.atualizadoEm = atualizadoEm;
 	}
 	
+=======
+public class PostagemModel {
+>>>>>>> 24ceb86306081ca5edcaa921e638b690804f4cc1
 
 }

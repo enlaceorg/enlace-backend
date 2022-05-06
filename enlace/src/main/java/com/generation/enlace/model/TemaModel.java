@@ -1,13 +1,19 @@
 package com.generation.enlace.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name="temas")
@@ -25,16 +31,14 @@ public class TemaModel {
 	@Size(min=3,max=20)
 	private String tag;
 	
+	//RELACIONAMENTO COM POSTAGEM
+	@OneToMany(mappedBy = "tema", cascade = CascadeType.ALL)
+	@JsonIgnoreProperties("tema")
+	private List<PostagemModel> postagens;
+	
 	
 	//Get Set
 
-	public Long getId() {
-		return temaId;
-	}
-
-	public void setId(Long temaId) {
-		this.temaId = temaId;
-	}
 
 	public String getDescricao() {
 		return descricao;
@@ -51,6 +55,23 @@ public class TemaModel {
 	public void setTag(String tag) {
 		this.tag = tag;
 	}
+
+	public Long getTemaId() {
+		return temaId;
+	}
+
+	public void setTemaId(Long temaId) {
+		this.temaId = temaId;
+	}
+
+	public List<PostagemModel> getPostagens() {
+		return postagens;
+	}
+
+	public void setPostagens(List<PostagemModel> postagens) {
+		this.postagens = postagens;
+	}
+
 
 	
 	

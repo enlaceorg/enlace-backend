@@ -35,15 +35,13 @@ public class UsuarioController {
 	public ResponseEntity<UsuarioModel> getById(@PathVariable Long usuarioId){
 		return repository.findById(usuarioId).map(resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());
 	}
-<<<<<<< HEAD
-=======
-	
+
 	@GetMapping("/nome/{nome}")
 	public ResponseEntity<List<UsuarioModel>>getByNome(@PathVariable String nome){
 		return ResponseEntity.ok(repository.findAllByNomeContainingIgnoreCase(nome));
 	}
 	
->>>>>>> 572406c19eab195cc5e17c5a3eedfb98ab1f1f3a
+
 	
 	@PostMapping
 	public ResponseEntity<UsuarioModel> post (@RequestBody UsuarioModel usuario){

@@ -1,17 +1,22 @@
 package com.generation.enlace.model;
 
 import java.time.Instant;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.springframework.data.annotation.CreatedDate;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name="usuarios")
@@ -45,6 +50,13 @@ public class UsuarioModel {
 	@Column(name = "criado_em")
 	private Instant criadoEm = Instant.now();
 
+	
+	//RELACIONAMENTO
+	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+	@JsonIgnoreProperties("usuario")
+	private List<PostagemModel> postagens;
+	
+	
 	public Long getUsuarioId() {
 		return usuarioId;
 	}
@@ -91,5 +103,13 @@ public class UsuarioModel {
 
 	public void setCriadoEm(Instant criadoEm) {
 		this.criadoEm = criadoEm;
+	}
+
+	public List<PostagemModel> getPostagem() {
+		return postagens;
+	}
+
+	public void setPostagem(List<PostagemModel> postagem) {
+		this.postagens = postagem;
 	}
 }

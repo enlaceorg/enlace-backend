@@ -50,7 +50,7 @@ public class TemaController {
 	
 	@PutMapping
 	public ResponseEntity<TemaModel> put ( @RequestBody TemaModel tema) {
-		return repository.findById(tema.getId())
+		return repository.findById(tema.getTemaId())
 				.map(resp -> ResponseEntity.status(HttpStatus.OK)
 						.body(repository.save(tema))).orElse(ResponseEntity.notFound().build());
 	}

@@ -28,7 +28,7 @@ public class TemaModel {
 	private String descricao;
 	
 	@NotNull
-	@Size(min=3,max=20)
+	@Size(min=3,max=100)
 	private String tag;
 	
 	//RELACIONAMENTO COM POSTAGEM

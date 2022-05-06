@@ -35,14 +35,22 @@ public class UsuarioController {
 	public ResponseEntity<UsuarioModel> getById(@PathVariable Long usuarioId){
 		return repository.findById(usuarioId).map(resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());
 	}
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> 19765db17e16f4e220dd720f1362ff311ee52737
 	@GetMapping("/nome/{nome}")
 	public ResponseEntity<List<UsuarioModel>>getByNome(@PathVariable String nome){
 		return ResponseEntity.ok(repository.findAllByNomeContainingIgnoreCase(nome));
 	}
+<<<<<<< HEAD
 	
 
 	
+=======
+
+>>>>>>> 19765db17e16f4e220dd720f1362ff311ee52737
 	@PostMapping
 	public ResponseEntity<UsuarioModel> post (@RequestBody UsuarioModel usuario){
 		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(usuario));

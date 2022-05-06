@@ -3,8 +3,6 @@ package com.generation.enlace.controller;
 
 import java.util.List;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,7 +33,7 @@ public class TemaController {
 	}
 	
 	@GetMapping("/{temaId}")
-	public ResponseEntity<TemaModel> getById(@PathVariable long temaId){
+	public ResponseEntity<TemaModel> getById(@PathVariable Long temaId){
 		return repository.findById(temaId).map(resp -> ResponseEntity.ok(resp))
 				.orElse(ResponseEntity.notFound().build());
 	}
@@ -52,11 +50,13 @@ public class TemaController {
 	
 	@PutMapping
 	public ResponseEntity<TemaModel> put ( @RequestBody TemaModel tema) {
-		 return ResponseEntity.status(HttpStatus.OK).body(repository.save(tema));
+		return repository.findById(tema.getId())
+				.map(resp -> ResponseEntity.status(HttpStatus.OK)
+						.body(repository.save(tema))).orElse(ResponseEntity.notFound().build());
 	}
 	
 	@DeleteMapping("/{temaId}")
-	public void delete(@PathVariable long temaId) {
+	public void delete(@PathVariable Long temaId) {
 		repository.deleteById(temaId);
 	}
 

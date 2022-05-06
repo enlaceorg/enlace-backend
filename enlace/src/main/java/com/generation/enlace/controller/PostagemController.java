@@ -34,7 +34,7 @@ public class PostagemController {
 	}
 	
 	@GetMapping("/{postagemId}")
-	public ResponseEntity<PostagemModel> GetById (@PathVariable long postagemId){
+	public ResponseEntity<PostagemModel> GetById (@PathVariable Long postagemId){
 		return repository.findById(postagemId)
 				.map(resp -> ResponseEntity.ok(resp))
 				.orElse(ResponseEntity.notFound().build());
@@ -57,7 +57,7 @@ public class PostagemController {
 	}
 	
 	@DeleteMapping("/{postagemId}")
-	public void delete(@PathVariable long postagemId) {
+	public void delete(@PathVariable Long postagemId) {
 		repository.deleteById(postagemId);
 	}
 	

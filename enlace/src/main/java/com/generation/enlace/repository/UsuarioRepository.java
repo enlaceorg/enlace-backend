@@ -9,8 +9,4 @@ import java.util.List;
 public interface UsuarioRepository extends JpaRepository<UsuarioModel, Long> {
 
 	public List<UsuarioModel> findAllByNomeContainingIgnoreCase(String nome);
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> af153e7ff4837404fead05bce4a309fec682d8ff

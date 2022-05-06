@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.generation.enlace.model.TemaModel;
 
 public interface TemaRepository extends JpaRepository<TemaModel, Long> {
-public List<TemaModel> findAllByDescricaoContainingIgnoreCase(String descricao);
+public List<TemaModel> findAllByTagContainingIgnoreCase(String tag);
 }

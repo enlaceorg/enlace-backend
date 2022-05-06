@@ -1,7 +1,6 @@
 package com.generation.enlace.controller;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.generation.enlace.model.UsuarioModel;
 import com.generation.enlace.repository.UsuarioRepository;
 
@@ -35,22 +33,12 @@ public class UsuarioController {
 	public ResponseEntity<UsuarioModel> getById(@PathVariable Long usuarioId){
 		return repository.findById(usuarioId).map(resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());
 	}
-<<<<<<< HEAD
 
-=======
-	
->>>>>>> 19765db17e16f4e220dd720f1362ff311ee52737
 	@GetMapping("/nome/{nome}")
 	public ResponseEntity<List<UsuarioModel>>getByNome(@PathVariable String nome){
 		return ResponseEntity.ok(repository.findAllByNomeContainingIgnoreCase(nome));
 	}
-<<<<<<< HEAD
-	
 
-	
-=======
-
->>>>>>> 19765db17e16f4e220dd720f1362ff311ee52737
 	@PostMapping
 	public ResponseEntity<UsuarioModel> post (@RequestBody UsuarioModel usuario){
 		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(usuario));

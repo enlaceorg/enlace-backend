@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 import com.generation.enlace.model.PostagemModel;
+import com.generation.enlace.repository.PostagemRepository;
 
 @RestController
 @RequestMapping("/postagem")
@@ -30,9 +32,9 @@ public class PostagemController {
 		return ResponseEntity.ok(repository.findAll());
 	}
 	
-	@GetMapping("/{postagem_id}")
-	public ResponseEntity<PostagemModel> GetById (@PathVariable long postagem_id){
-		return repository.findById(postagem_id)
+	@GetMapping("/{postagemId}")
+	public ResponseEntity<PostagemModel> GetById (@PathVariable long postagemId){
+		return repository.findById(postagemId)
 				.map(resp -> ResponseEntity.ok(resp))
 				.orElse(ResponseEntity.notFound().build());
 	}
@@ -47,9 +49,9 @@ public class PostagemController {
 		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(conteudo));		
 	}
 	
-	@DeleteMapping("/{postagem_id}")
-	public void delete(@PathVariable long postagem_id) {
-		repository.deleteById(postagem_id);
+	@DeleteMapping("/{postagemId}")
+	public void delete(@PathVariable long postagemId) {
+		repository.deleteById(postagemId);
 	}
 	
 }

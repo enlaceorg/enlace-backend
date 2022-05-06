@@ -13,12 +13,13 @@ import javax.validation.constraints.NotNull;
 import org.springframework.data.annotation.CreatedDate;
 
 @Entity
-@Table(name = "postagem")
+@Table(name = "postagens")
 public class PostagemModel {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public long postagem_id;
+	@Column(name="postagem_id")
+	public long postagemId;
 	
 	@NotNull
 	public String conteudo;
@@ -38,12 +39,12 @@ public class PostagemModel {
 	
 	//GET e Set
 
-	public long getPostagem_id() {
-		return postagem_id;
+	public long getpostagemId() {
+		return postagemId;
 	}
 
-	public void setPostagem_id(long postagem_id) {
-		this.postagem_id = postagem_id;
+	public void setpostagemId(long postagemId) {
+		this.postagemId = postagemId;
 	}
 
 	public String getConteudo() {

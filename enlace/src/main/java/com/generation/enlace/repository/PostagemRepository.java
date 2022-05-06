@@ -7,6 +7,5 @@ import com.generation.enlace.model.PostagemModel;
 
 @Repository
 public interface PostagemRepository extends JpaRepository<PostagemModel, Long> {
-
 	public List<PostagemModel> findAllByConteudoContainingIgnoreCase(String conteudo);
 }

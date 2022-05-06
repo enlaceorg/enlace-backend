@@ -19,7 +19,8 @@ public class UsuarioModel {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long usuario_id;
+	@Column(name="usuario_id")
+	private Long usuarioId;
 	
 	@NotNull
 	@Size(min=1,max=100)
@@ -44,12 +45,12 @@ public class UsuarioModel {
 	@Column(name = "criado_em")
 	private Instant criadoEm = Instant.now();
 
-	public Long getUsuario_id() {
-		return usuario_id;
+	public Long getUsuarioId() {
+		return usuarioId;
 	}
 
-	public void setUsuario_id(Long usuario_id) {
-		this.usuario_id = usuario_id;
+	public void setUsuarioId(Long usuarioId) {
+		this.usuarioId = usuarioId;
 	}
 
 	public String getNome() {

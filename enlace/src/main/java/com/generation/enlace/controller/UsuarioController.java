@@ -31,11 +31,19 @@ public class UsuarioController {
 		return ResponseEntity.ok(repository.findAll());
 	}
 	
-	@GetMapping("/{id}")
-	public ResponseEntity<UsuarioModel> getById(@PathVariable Long usuario_id){
-		return repository.findById(usuario_id).map(resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());
+	@GetMapping("/{usuarioId}")
+	public ResponseEntity<UsuarioModel> getById(@PathVariable Long usuarioId){
+		return repository.findById(usuarioId).map(resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());
 	}
-
+<<<<<<< HEAD
+=======
+	
+	@GetMapping("/nome/{nome}")
+	public ResponseEntity<List<UsuarioModel>>getByNome(@PathVariable String nome){
+		return ResponseEntity.ok(repository.findAllByNomeContainingIgnoreCase(nome));
+	}
+	
+>>>>>>> 572406c19eab195cc5e17c5a3eedfb98ab1f1f3a
 	
 	@PostMapping
 	public ResponseEntity<UsuarioModel> post (@RequestBody UsuarioModel usuario){
@@ -44,13 +52,13 @@ public class UsuarioController {
 	
 	@PutMapping
 	public ResponseEntity<UsuarioModel> put (@RequestBody UsuarioModel usuario){
-		return repository.findById(usuario.getUsuario_id())
+		return repository.findById(usuario.getUsuarioId())
 				.map(resp -> ResponseEntity.status(HttpStatus.OK)
 						.body(repository.save(usuario))).orElse(ResponseEntity.notFound().build());
 	}
 	
-	@DeleteMapping("/{id}")
-	public void delete(@PathVariable Long usuario_id) {
-		repository.deleteById(usuario_id);
+	@DeleteMapping("/{usuarioId}")
+	public void delete(@PathVariable Long usuarioId) {
+		repository.deleteById(usuarioId);
 	}
 }

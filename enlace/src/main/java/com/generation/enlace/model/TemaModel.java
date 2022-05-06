@@ -1,5 +1,6 @@
 package com.generation.enlace.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,7 +15,8 @@ public class TemaModel {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long tema_id;
+	@Column(name="tema_id")
+	private Long temaId;
 	
 	@NotNull
 	private String descricao;
@@ -27,11 +29,11 @@ public class TemaModel {
 	//Get Set
 
 	public Long getId() {
-		return tema_id;
+		return temaId;
 	}
 
-	public void setId(Long id) {
-		this.tema_id = id;
+	public void setId(Long temaId) {
+		this.temaId = temaId;
 	}
 
 	public String getDescricao() {

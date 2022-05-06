@@ -19,7 +19,7 @@ import com.generation.enlace.model.UsuarioModel;
 import com.generation.enlace.repository.UsuarioRepository;
 
 @RestController
-@RequestMapping("/usuario")
+@RequestMapping("/usuarios")
 @CrossOrigin("*")
 public class UsuarioController {
 	
@@ -35,9 +35,7 @@ public class UsuarioController {
 	public ResponseEntity<UsuarioModel> getById(@PathVariable Long usuario_id){
 		return repository.findById(usuario_id).map(resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());
 	}
-	
-	
-	
+
 	
 	@PostMapping
 	public ResponseEntity<UsuarioModel> post (@RequestBody UsuarioModel usuario){

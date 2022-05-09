@@ -36,7 +36,7 @@ public class UsuarioModel {
 	private String sobrenome;
 	*/
 	@NotNull
-	private String email;
+	private String usuarioEmail;
 
 	@NotNull
 	private String senha;
@@ -73,12 +73,12 @@ public class UsuarioModel {
 		this.nome = nome;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getUsuarioEmail() {
+		return usuarioEmail;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setEmail(String usuarioEmail) {
+		this.usuarioEmail = usuarioEmail;
 	}
 
 	public String getSenha() {

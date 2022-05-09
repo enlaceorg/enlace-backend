@@ -29,31 +29,30 @@ public class PostagemController {
 	private PostagemRepository repository;
 
 	@GetMapping
-	public ResponseEntity<List<PostagemModel>> GetAll(){
+	public ResponseEntity<List<PostagemModel>> getAll() {
 		return ResponseEntity.ok(repository.findAll());
 	}
 	
 	@GetMapping("/{postagemId}")
-	public ResponseEntity<PostagemModel> GetById (@PathVariable Long postagemId){
+	public ResponseEntity<PostagemModel> getById(@PathVariable Long postagemId) {
 		return repository.findById(postagemId)
 				.map(resp -> ResponseEntity.ok(resp))
 				.orElse(ResponseEntity.notFound().build());
 	}
 	
 	@GetMapping("/conteudo/{conteudo}")
-	public ResponseEntity<List<PostagemModel>> GetByTitulo(@PathVariable String conteudo){
+	public ResponseEntity<List<PostagemModel>> getByTitulo(@PathVariable String conteudo) {
 		return ResponseEntity.ok(repository.findAllByConteudoContainingIgnoreCase(conteudo));
-		}
+	}
 
 	@PostMapping
-	public ResponseEntity<PostagemModel> post(@Valid @RequestBody PostagemModel conteudo){
+	public ResponseEntity<PostagemModel> post(@Valid @RequestBody PostagemModel conteudo) {
 		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(conteudo));		
 	}
 
 	@PutMapping
-	public ResponseEntity<PostagemModel> put(@Valid @RequestBody PostagemModel conteudo){
+	public ResponseEntity<PostagemModel> put(@Valid @RequestBody PostagemModel conteudo) {
 		return ResponseEntity.status(HttpStatus.OK).body(repository.save(conteudo));
-				
 	}
 	
 	@DeleteMapping("/{postagemId}")

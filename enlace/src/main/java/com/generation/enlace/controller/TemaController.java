@@ -33,23 +33,23 @@ public class TemaController {
 	}
 	
 	@GetMapping("/{temaId}")
-	public ResponseEntity<TemaModel> getById(@PathVariable Long temaId){
+	public ResponseEntity<TemaModel> getById(@PathVariable Long temaId) {
 		return repository.findById(temaId).map(resp -> ResponseEntity.ok(resp))
 				.orElse(ResponseEntity.notFound().build());
 	}
 	
 	@GetMapping("/descricao/{descricao}")
-	public ResponseEntity<List<TemaModel>> getByTipo(@PathVariable String descricao){
+	public ResponseEntity<List<TemaModel>> getByTipo(@PathVariable String descricao) {
 		return ResponseEntity.ok(repository.findAllByTagContainingIgnoreCase(descricao));
 	}
 	
 	@PostMapping
-	public ResponseEntity<TemaModel> post ( @RequestBody TemaModel tema) {
+	public ResponseEntity<TemaModel> post(@RequestBody TemaModel tema) {
 		 return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(tema));
 	 }
 	
 	@PutMapping
-	public ResponseEntity<TemaModel> put ( @RequestBody TemaModel tema) {
+	public ResponseEntity<TemaModel> put(@RequestBody TemaModel tema) {
 		return repository.findById(tema.getTemaId())
 				.map(resp -> ResponseEntity.status(HttpStatus.OK)
 						.body(repository.save(tema))).orElse(ResponseEntity.notFound().build());

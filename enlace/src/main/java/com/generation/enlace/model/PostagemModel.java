@@ -14,6 +14,7 @@ import javax.validation.constraints.NotNull;
 import org.springframework.data.annotation.CreatedDate;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.springframework.data.annotation.LastModifiedDate;
 
 @Entity
 @Table(name = "postagens")
@@ -32,11 +33,11 @@ public class PostagemModel {
 	
 	@NotNull
 	@CreatedDate
-	@Column(name = "criado_em")
+	@Column(name = "criado_em", updatable=false)
 	public Instant criadoEm = Instant.now();
 	
 	@NotNull
-	@CreatedDate
+	@LastModifiedDate
 	@Column(name = "atualizado_em")
 	public Instant atualizadoEm = Instant.now();
 	

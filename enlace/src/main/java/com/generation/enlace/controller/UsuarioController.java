@@ -25,30 +25,27 @@ public class UsuarioController {
 	private UsuarioRepository repository;
 	
 	@GetMapping
-	public ResponseEntity<List<UsuarioModel>> getAll(){
+	public ResponseEntity<List<UsuarioModel>> getAll() {
 		return ResponseEntity.ok(repository.findAll());
 	}
 	
 	@GetMapping("/{usuarioId}")
-	public ResponseEntity<UsuarioModel> getById(@PathVariable Long usuarioId){
+	public ResponseEntity<UsuarioModel> getById(@PathVariable Long usuarioId) {
 		return repository.findById(usuarioId).map(resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());
 	}
 
-<<<<<<< HEAD
 	@GetMapping("/nome/{nome}")
-	public ResponseEntity<List<UsuarioModel>>getByNome(@PathVariable String nome){
+	public ResponseEntity<List<UsuarioModel>> getByNome(@PathVariable String nome) {
 		return ResponseEntity.ok(repository.findAllByNomeContainingIgnoreCase(nome));
 	}
 
-=======
->>>>>>> af153e7ff4837404fead05bce4a309fec682d8ff
 	@PostMapping
-	public ResponseEntity<UsuarioModel> post (@RequestBody UsuarioModel usuario){
+	public ResponseEntity<UsuarioModel> post(@RequestBody UsuarioModel usuario) {
 		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(usuario));
 	}
 	
 	@PutMapping
-	public ResponseEntity<UsuarioModel> put (@RequestBody UsuarioModel usuario){
+	public ResponseEntity<UsuarioModel> put(@RequestBody UsuarioModel usuario) {
 		return repository.findById(usuario.getUsuarioId())
 				.map(resp -> ResponseEntity.status(HttpStatus.OK)
 						.body(repository.save(usuario))).orElse(ResponseEntity.notFound().build());

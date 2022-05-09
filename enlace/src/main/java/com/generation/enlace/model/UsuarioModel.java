@@ -36,6 +36,7 @@ public class UsuarioModel {
 	private String sobrenome;
 	*/
 	@NotNull
+	@Column(name = "usuario_email")
 	private String usuarioEmail;
 
 	@NotNull

@@ -42,7 +42,6 @@ public class UsuarioModel {
 	@NotNull
 	private String senha;
 	
-	@NotNull
 	@Column(name = "imagem_url")
 	private String imagemUrl;
 

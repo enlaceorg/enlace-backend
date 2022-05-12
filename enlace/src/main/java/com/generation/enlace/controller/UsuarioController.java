@@ -1,6 +1,8 @@
 package com.generation.enlace.controller;
 
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,9 +36,9 @@ public class UsuarioController {
 		return repository.findById(usuarioId).map(resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());
 	}
 
-	@GetMapping("/nome/{nome}")
-	public ResponseEntity<List<UsuarioModel>> getByNome(@PathVariable String nome) {
-		return ResponseEntity.ok(repository.findAllByNomeContainingIgnoreCase(nome));
+	@GetMapping("/usuario/{usuario}")
+	public ResponseEntity<Optional<UsuarioModel>> getByNome(@PathVariable String usuario) {
+		return ResponseEntity.ok(repository.findByUsuario(usuario));
 	}
 
 	@PostMapping

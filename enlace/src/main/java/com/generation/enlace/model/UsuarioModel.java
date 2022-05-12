@@ -30,11 +30,7 @@ public class UsuarioModel {
 	@NotNull
 	@Size(min=1,max=100)
 	private String nome;
-	/*
-	@NotNull
-	@Size(min=1,max=100)
-	private String sobrenome;
-	*/
+
 	@NotNull
 	@Column(name = "usuario_email")
 	private String usuarioEmail;
@@ -50,8 +46,6 @@ public class UsuarioModel {
 	@Column(name = "criado_em")
 	private Instant criadoEm = Instant.now();
 
-	
-	//RELACIONAMENTO
 	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("usuario")
 	private List<PostagemModel> postagens;

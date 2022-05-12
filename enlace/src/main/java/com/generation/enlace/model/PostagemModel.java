@@ -27,8 +27,7 @@ public class PostagemModel {
 	
 	@NotNull
 	public String conteudo;
-	
-	
+
 	public int abracei;
 	
 	@NotNull
@@ -40,21 +39,15 @@ public class PostagemModel {
 	@LastModifiedDate
 	@Column(name = "atualizado_em")
 	public Instant atualizadoEm = Instant.now();
-	
-	
-	//RELACIONAMENTO usuario
+
 	@ManyToOne
 	@JsonIgnoreProperties("postagem")
 	private UsuarioModel usuario;
-	
-	
-	//RELACIONAMENTO TEMA
+
 	@ManyToOne
-	@JsonIgnoreProperties("postagem")
+	@JsonIgnoreProperties("postagens")
 	private TemaModel tema;
-	
-	
-	//GET e Set
+
 
 	public long getpostagemId() {
 		return postagemId;

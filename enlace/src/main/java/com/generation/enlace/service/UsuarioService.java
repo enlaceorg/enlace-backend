@@ -14,34 +14,28 @@ import com.generation.enlace.repository.UsuarioRepository;
 
 @Service
 public class UsuarioService {
-
 	@Autowired
 	private UsuarioRepository repository;
 
-	public Optional<UsuarioModel> cadastraUsuario(UsuarioModel usuario) {
+	public Optional<UsuarioModel> cadastrarUsuario(UsuarioModel usuario) {
 
-		if (repository.findByUsuario(usuario.getUsuarioEmail()).isPresent())
+		if (repository.findByUsuarioEmail(usuario.getUsuarioEmail()).isPresent()) {
 			return Optional.empty();
+		}
 
 		usuario.setSenha(criptografarSenha(usuario.getSenha()));
 		return Optional.of(repository.save(usuario));
 	}
 
-	private String criptografarSenha(String senha) {
-		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-		return encoder.encode(senha);
-	};
-
-	public Optional<UsuarioLoginModel> autenticaUsuario(Optional<UsuarioLoginModel> usuarioLogin) {
-		Optional<UsuarioModel> usuario = repository.findByUsuario(usuarioLogin.get().getUsuarioEmail());
+	public Optional<UsuarioLoginModel> autenticarUsuario(Optional<UsuarioLoginModel> usuarioLogin) {
+		Optional<UsuarioModel> usuario = repository.findByUsuarioEmail(usuarioLogin.get().getUsuarioEmail());
 
 		if (usuario.isPresent()) {
 			if (compararSenhas(usuarioLogin.get().getSenha(), usuario.get().getSenha())) {
 				usuarioLogin.get().setUsuarioId(usuario.get().getUsuarioId());
 				usuarioLogin.get().setNome(usuario.get().getNome());
 				usuarioLogin.get().setImagemUrl(usuario.get().getImagemUrl());
-				usuarioLogin.get()
-						.setToken(gerarBasicToken(usuarioLogin.get().getUsuarioEmail(), usuarioLogin.get().getSenha()));
+				usuarioLogin.get().setToken(gerarBasicToken(usuarioLogin.get().getUsuarioEmail(), usuarioLogin.get().getSenha()));
 				usuarioLogin.get().setSenha(usuario.get().getSenha());
 
 				return usuarioLogin;
@@ -51,11 +45,16 @@ public class UsuarioService {
 		return Optional.empty();
 	}
 
-	private boolean compararSenhas(String senhaDigitada, String senhaBanco) {
+	private String criptografarSenha(String senha) {
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		return encoder.encode(senha);
+	};
+
+	private boolean compararSenhas(String senhaDigitada, String senhaCadastrada) {
 
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
-		return encoder.matches(senhaDigitada, senhaBanco);
+		return encoder.matches(senhaDigitada, senhaCadastrada);
 	}
 
 	private String gerarBasicToken(String usuario, String senha) {

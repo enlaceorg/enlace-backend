@@ -18,6 +18,8 @@ import org.springframework.data.annotation.CreatedDate;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
 @Entity
 @Table(name="usuarios")
 public class UsuarioModel {
@@ -27,21 +29,22 @@ public class UsuarioModel {
 	@Column(name="usuario_id")
 	private Long usuarioId;
 	
-	@NotNull
+	@NotNull(message="campo obrigatório")
 	@Size(min=1,max=100)
 	private String nome;
 
-	@NotNull
+	@Schema(example = "email@email.com")
+	@NotNull(message="campo obrigatório")
 	@Column(name = "usuario_email")
 	private String usuarioEmail;
 
-	@NotNull
+	@NotNull(message="campo obrigatório")
 	private String senha;
 	
 	@Column(name = "imagem_url")
 	private String imagemUrl;
 
-	@NotNull
+	@NotNull(message="campo obrigatório")
 	@CreatedDate
 	@Column(name = "criado_em")
 	private Instant criadoEm = Instant.now();

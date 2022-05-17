@@ -74,7 +74,7 @@ public class UsuarioModel {
 		return usuarioEmail;
 	}
 
-	public void setEmail(String usuarioEmail) {
+	public void setUsuarioEmail(String usuarioEmail) {
 		this.usuarioEmail = usuarioEmail;
 	}
 

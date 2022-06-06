@@ -11,6 +11,8 @@ public class UsuarioLoginModel {
 	private String senha;
 
 	private String imagemUrl;
+
+	private String tipo;
 	
 	private String token;
 
@@ -52,6 +54,14 @@ public class UsuarioLoginModel {
 
 	public void setImagemUrl(String imagemUrl) {
 		this.imagemUrl = imagemUrl;
+	}
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 
 	public String getToken() {

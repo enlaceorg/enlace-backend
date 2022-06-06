@@ -44,6 +44,8 @@ public class UsuarioModel {
 	@Column(name = "imagem_url")
 	private String imagemUrl;
 
+	private String tipo;
+
 	@NotNull(message="campo obrigatório")
 	@CreatedDate
 	@Column(name = "criado_em")
@@ -88,6 +90,14 @@ public class UsuarioModel {
 
 	public String getImagemUrl() {
 		return imagemUrl;
+	}
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 
 	public void setImagemUrl(String imagemUrl) {

@@ -28,6 +28,8 @@ public class PostagemModel {
 	@NotNull
 	public String conteudo;
 
+	public String imagem;
+
 	public int abracei;
 	
 	@NotNull
@@ -48,21 +50,26 @@ public class PostagemModel {
 	@JsonIgnoreProperties("postagens")
 	private TemaModel tema;
 
-
-	public long getpostagemId() {
+	public long getPostagemId() {
 		return postagemId;
 	}
-
-	public void setpostagemId(long postagemId) {
+	public void setPostagemId(long postagemId) {
 		this.postagemId = postagemId;
 	}
-
 	public String getConteudo() {
 		return conteudo;
 	}
 
 	public void setConteudo(String conteudo) {
 		this.conteudo = conteudo;
+	}
+
+	public String getImagem() {
+		return imagem;
+	}
+
+	public void setImagem(String imagem) {
+		this.imagem = imagem;
 	}
 
 	public int getAbracei() {

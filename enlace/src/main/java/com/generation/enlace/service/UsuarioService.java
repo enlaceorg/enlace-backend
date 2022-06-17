@@ -27,6 +27,15 @@ public class UsuarioService {
 		return Optional.of(repository.save(usuario));
 	}
 
+	public Optional<UsuarioModel> atualizarUsuario(UsuarioModel usuario) {
+
+		if (repository.findById(usuario.getUsuarioId()).isPresent()) {
+			usuario.setSenha((criptografarSenha(usuario.getSenha())));
+			return Optional.of(repository.save(usuario));
+		}
+		return Optional.empty();
+	}
+
 	public Optional<UsuarioLoginModel> autenticarUsuario(Optional<UsuarioLoginModel> usuarioLogin) {
 		Optional<UsuarioModel> usuario = repository.findByUsuarioEmail(usuarioLogin.get().getUsuarioEmail());
 

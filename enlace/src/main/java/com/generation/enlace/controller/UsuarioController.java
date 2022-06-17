@@ -67,11 +67,11 @@ public class UsuarioController {
 		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(usuario));
 	}
 	
-	@PutMapping
+	@PutMapping("/editar")
 	public ResponseEntity<UsuarioModel> put(@RequestBody UsuarioModel usuario) {
-		return repository.findById(usuario.getUsuarioId())
-				.map(resp -> ResponseEntity.status(HttpStatus.OK)
-						.body(repository.save(usuario))).orElse(ResponseEntity.notFound().build());
+		return usuarioService.atualizarUsuario(usuario)
+				.map(resp -> ResponseEntity.status(HttpStatus.OK).body(resp))
+				.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
 	}
 	
 	@DeleteMapping("/{usuarioId}")
